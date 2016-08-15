@@ -19,7 +19,7 @@ ENV PATH /app/.heroku/php/bin:/app/.heroku/php/sbin:$PATH
 # Install Apache
 RUN curl --silent --location https://lang-php.s3.amazonaws.com/dist-cedar-14-master/apache-$HTTPD_VERSION.tar.gz | tar xz -C /app/.heroku/php
 # Config
-RUN curl --silent --location https://raw.githubusercontent.com/heroku/heroku-buildpack-php/5a770b914549cf2a897cbbaf379eb5adf410d464/conf/apache2/httpd.conf.default > /app/.heroku/php/etc/apache2/httpd.conf
+RUN curl --silent --location https://raw.githubusercontent.com/heroku/heroku-buildpack-php/b71abaa34e36f25c33c359c5296fdd83634353d2/conf/apache2/httpd.conf.default > /app/.heroku/php/etc/apache2/httpd.conf
 # FPM socket permissions workaround when run as root
 RUN echo "\n\
 Group root\n\
@@ -28,7 +28,7 @@ Group root\n\
 # Install Nginx
 RUN curl --silent --location https://lang-php.s3.amazonaws.com/dist-cedar-14-master/nginx-$NGINX_VERSION.tar.gz | tar xz -C /app/.heroku/php
 # Config
-RUN curl --silent --location https://raw.githubusercontent.com/heroku/heroku-buildpack-php/5a770b914549cf2a897cbbaf379eb5adf410d464/conf/nginx/nginx.conf.default > /app/.heroku/php/etc/nginx/nginx.conf
+RUN curl --silent --location https://raw.githubusercontent.com/heroku/heroku-buildpack-php/b71abaa34e36f25c33c359c5296fdd83634353d2/conf/nginx/nginx.conf.default > /app/.heroku/php/etc/nginx/nginx.conf
 # FPM socket permissions workaround when run as root
 RUN echo "\n\
 user nobody root;\n\
@@ -38,7 +38,7 @@ user nobody root;\n\
 RUN curl --silent --location https://lang-php.s3.amazonaws.com/dist-cedar-14-master/php-$PHP_VERSION.tar.gz | tar xz -C /app/.heroku/php
 # Config
 RUN mkdir -p /app/.heroku/php/etc/php/conf.d
-RUN curl --silent --location https://raw.githubusercontent.com/heroku/heroku-buildpack-php/5a770b914549cf2a897cbbaf379eb5adf410d464/conf/php/php.ini > /app/.heroku/php/etc/php/php.ini
+RUN curl --silent --location https://raw.githubusercontent.com/heroku/heroku-buildpack-php/b71abaa34e36f25c33c359c5296fdd83634353d2/conf/php/php.ini > /app/.heroku/php/etc/php/php.ini
 # Enable all optional exts
 RUN echo "\n\
 user_ini.cache_ttl = 30 \n\
