@@ -72,6 +72,8 @@ RUN curl --silent --location "https://lang-php.s3.amazonaws.com/dist-cedar-14-ma
 # copy dep files first so Docker caches the install step if they don't change
 ONBUILD COPY composer.lock /app/user/
 ONBUILD COPY composer.json /app/user/
+# update to latest composer version
+ONBUILD RUN composer self-update
 # run install but without scripts as we don't have the app source yet
 ONBUILD RUN composer install --no-scripts --no-autoloader --ignore-plateform-reqs
 # require the buildpack for execution
