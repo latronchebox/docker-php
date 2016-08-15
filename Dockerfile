@@ -73,9 +73,11 @@ RUN curl --silent --location "https://lang-php.s3.amazonaws.com/dist-cedar-14-ma
 ONBUILD COPY composer.lock /app/user/
 ONBUILD COPY composer.json /app/user/
 # run install but without scripts as we don't have the app source yet
-ONBUILD RUN composer install --no-scripts
+ONBUILD RUN composer install --no-scripts --no-autoloader --ignore-plateform-reqs
 # require the buildpack for execution
 ONBUILD RUN composer show --installed heroku/heroku-buildpack-php || { echo 'Your composer.json must have "heroku/heroku-buildpack-php" as a "require-dev" dependency.'; exit 1; }
+# Optimize autoloader
+ONBUILD RUN composer dump-autoload --optimize
 # rest of app
 ONBUILD ADD . /app/user/
 # run install hooks
