@@ -62,6 +62,8 @@ extension=sqlite3.so \n\
 extension=pdo_sqlite.so \n\
 extension=xmlrpc.so \n\
 extension=xsl.so\n\
+extension=memcached.so\n\
+memcached.use_sasl = 1\n\
 " >> /app/.heroku/php/etc/php/php.ini
 
 # Install Composer
