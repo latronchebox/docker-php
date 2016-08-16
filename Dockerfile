@@ -66,6 +66,9 @@ extension=memcached.so\n\
 memcached.use_sasl = 1\n\
 " >> /app/.heroku/php/etc/php/php.ini
 
+RUN apt-get update && apt-get install -y libmemcached
+RUN pecl install memcached
+
 # Install Composer
 RUN curl --silent --location "https://lang-php.s3.amazonaws.com/dist-cedar-14-master/composer-1.0.0alpha11.tar.gz" | tar xz -C /app/.heroku/php
 
